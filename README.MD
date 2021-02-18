@@ -1,8 +1,8 @@
-# 1. About
+# About
 
 A PERN stack application that allows you to create/add/update/delete restaurants. Users can create a new Restaurant, rate it and add it to the database. Other users can review and update the average reviews by adding their own.
 
-# 2. Stack
+# Stack
 
 Postgres, Express, React, Node.
 
