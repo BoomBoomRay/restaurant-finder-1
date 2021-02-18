@@ -18,19 +18,17 @@ if (process.env.NODE_ENV === 'production') {
 //Get all restaurants
 app.get('/api/v1/restaurants', async (req, res) => {
   try {
-    const query = {
-      text: 'SELECT * FROM restaurants;',
+    const restaurantRatingData = {
+      text:
+        'SELECT * from restaurants left join (select restaurant_id, COUNT(*) as review_count, TRUNC(AVG(rating),1) as average_rating from reviews group by restaurant_id) reviews on restaurants.id = reviews.restaurant_id;',
     };
-    const results = await db.query(query);
-    const resultsData = await db.query(
-      'SELECT * from restaurants left join (select restaurant_id, COUNT(*) as review_count, TRUNC(AVG(rating),1) as average_rating from reviews group by restaurant_id) reviews on restaurants.id = reviews.restaurant_id;'
-    );
+    const resultsData = await db.query(restaurantRatingData);
+
     res.status(200).json({
       status: 'success',
-      results: results.rows.length,
+      results: resultsData.rows.length,
       data: {
         restaurants: resultsData.rows,
-        restaurants: results.rows,
       },
     });
   } catch (error) {
