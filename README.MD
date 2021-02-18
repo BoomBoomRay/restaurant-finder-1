@@ -16,4 +16,4 @@ A fun application practicing PERN stack.
 
 Checkout live version: https://restaurant-finder123.herokuapp.com/
 
-![Screenshot]('https://github.com/BoomBoomRay/restaurant-finder-1/blob/49ca42b0aad99823115c43571dd5e7075fdb100f/client/assets/screenshot.png')
+![Screenshot](client/assets/screenshot.png)
